@@ -1,0 +1,17 @@
+name: Download File
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Install download tool
+      run: dotnet tool install -g dotnetCampus.FileDownloader.Tool
+    - name: Install send mail tool
+      run: dotnet tool install -g dotnetCampus.SendEmailTask
+    - name: Download File
+      run: DownloadFile -u https://huggingface.co/stabilityai/stable-diffusion-3-medium/blob/main/sd3_medium_incl_clips_t5xxlfp16.safetensors -o file.zip
+    
